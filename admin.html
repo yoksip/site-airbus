@@ -13,16 +13,32 @@
 
   <!-- ===== Connexion ===== -->
   <div class="login-screen" id="loginScreen">
-    <form class="login-card" id="loginForm">
+    <div class="login-card">
       <img src="assets/plane.svg" class="login-mark" alt="">
       <h1>Administration</h1>
-      <p class="login-sub">Connecte-toi pour gérer le site.</p>
-      <label class="field"><span>Identifiant</span><input type="text" id="userInput" autocomplete="username" placeholder="thibaud" required></label>
-      <label class="field"><span>Mot de passe</span><input type="password" id="passInput" autocomplete="current-password" placeholder="••••••••" required></label>
-      <button class="btn btn-primary login-btn" type="submit" id="loginBtn">Se connecter</button>
+      <p class="login-sub">Connexion via GitHub — identifiant = votre compte GitHub.</p>
+
+      <button class="btn btn-primary login-btn" id="oauthBtn" type="button" hidden>Se connecter avec GitHub</button>
+      <div id="deviceBox" class="device-box" hidden>
+        <p>1. Ouvre <a id="deviceLink" href="https://github.com/login/device" target="_blank" rel="noopener">github.com/login/device</a></p>
+        <p>2. Saisis le code : <code id="deviceCode">----</code></p>
+        <p class="hint" id="deviceStatus">En attente de l'autorisation…</p>
+      </div>
+
+      <div class="or" id="orSep"><span>ou</span></div>
+
+      <label class="field"><span>Jeton d'accès GitHub (Personal Access Token)</span>
+        <input type="password" id="tokenInput" autocomplete="off" placeholder="github_pat_… ou ghp_…">
+      </label>
+      <button class="btn btn-primary login-btn" id="loginBtn" type="button">Se connecter avec un jeton</button>
+
       <p class="login-error" id="loginError" hidden></p>
-      <p class="login-hint" id="loginHint"></p>
-    </form>
+      <p class="login-hint">
+        Jeton <em>fine-grained</em> recommandé : accès limité au dépôt <code id="cfgRepo">…</code>,
+        permission <strong>Contents : Read and write</strong>.
+        Le jeton reste dans ce navigateur, jamais dans le dépôt.
+      </p>
+    </div>
   </div>
 
   <!-- ===== Application ===== -->
@@ -43,7 +59,6 @@
 
     <div class="tabs" id="tabs"></div>
 
-    <!-- Barre d'outils WYSIWYG -->
     <div class="toolbar" id="toolbar">
       <button type="button" data-cmd="bold" title="Gras"><b>B</b></button>
       <button type="button" data-cmd="italic" title="Italique"><i>I</i></button>
@@ -66,7 +81,6 @@
     </div>
   </div>
 
-  <!-- ===== Toasts / modales ===== -->
   <div class="toast" id="toast" hidden></div>
 
   <div class="modal" id="promptModal" hidden>

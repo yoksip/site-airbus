@@ -1,62 +1,59 @@
-# site-airbus — site + administration multi-utilisateurs
+# site-airbus — site + administration, 100 % sur GitHub
 
 Site statique (thème aéronautique) publié sur **GitHub Pages**, avec une administration
-**multi-utilisateurs** reposant sur un petit backend qui :
+**sans aucun serveur** : la connexion et l'enregistrement passent directement par **l'API GitHub**.
 
-- gère les comptes et la connexion (jeton),
-- applique des **permissions d'édition par groupe de pages**,
-- permettent à chacun de **changer son mot de passe**,
-- **enregistre le contenu** (`data/pages.json`) dans ce dépôt via l'API GitHub,
-  avec un jeton conservé **côté serveur** (jamais exposé au navigateur).
+- **Contenu** : `data/pages.json` (pages + groupes + identité du site), committé dans le dépôt.
+- **Droits d'accès** : `data/access.json` — pour chaque **compte GitHub**, un rôle (`admin` /
+  `editor`) et la liste des **groupes de pages** qu'il peut modifier.
+- **Connexion** : compte GitHub (jeton d'accès personnel, ou OAuth « device flow »).
+- Rien à héberger : tout vit dans le dépôt, GitHub Pages sert le site.
 
-## Rôles
+## Modèle de droits
 
-- **thibaud** (administrateur) : peut tout modifier, gérer les utilisateurs.
-- **Alain** (éditeur) : ne peut modifier que les pages du/des groupe(s) qui lui sont attribués
-  (ex. le groupe **ZQIRO**). Toutes les autres pages lui apparaissent en **lecture seule**.
+- Un **administrateur** (`role: "admin"`) modifie tout et gère les droits.
+- Un **éditeur** (`role: "editor"`, `groups: ["ZQIRO"]`) ne modifie que les pages du/des
+  groupe(s) indiqué(s) ; les autres pages apparaissent en **lecture seule**.
 
-Les permissions sont vérifiées **côté serveur** à l'enregistrement : un éditeur ne peut pas
-toucher aux pages d'un groupe qu'il n'a pas, même en trafiquant le navigateur.
+`data/access.json` :
+```json
+{
+  "users": {
+    "yoksip":   { "role": "admin",  "groups": [] },
+    "alain-d":  { "role": "editor", "groups": ["ZQIRO"] }
+  }
+}
+```
+La clé est le **login GitHub** du compte. En dépôt **privé**, garder ce fichier est sans risque.
+
+> ⚠️ Un site statique n'a pas de contrôle serveur : les droits sont appliqués par l'interface
+> (grisage des pages non autorisées). La **vraie barrière** est GitHub lui-même : en dépôt
+> **privé**, seuls les membres du dépôt peuvent lire/écrire, et chaque écriture est signée par
+> l'identité GitHub de l'auteur (historique dans les commits).
 
 ## Structure
 
 ```
 index.html            Page publique (lit data/pages.json)
-admin.html            Panneau d'administration (connexion + édition)
-data/pages.json        Contenu du site (pages + groupes + identité)
+admin.html            Panneau d'administration (connexion GitHub + édition WYSIWYG)
+data/pages.json        Contenu du site
+data/access.json       Droits par compte GitHub
 assets/style.css       Thème public
 assets/app.js          Rendu de la page publique
 assets/admin.css       Styles du panneau
-assets/admin.js        Logique d'administration (appelle le backend)
-assets/config.js       ← définir apiBase = adresse du backend
+assets/admin.js        Logique d'administration (API GitHub)
+assets/config.js       ← owner / repo / branche / chemins / OAuth client_id
 assets/plane.svg        Illustration d'avion
-server/app.py          Backend (Python standard, 0 dépendance)
-server/config.example.json   Config du backend (à copier en config.json)
-server/airbus-admin.service  Unité systemd
-.nojekyll             (GitHub Pages)
+.nojekyll
 ```
 
-## Mise en ligne
+## Mise en route
 
-Voir **DEPLOY.md** (déploiement du backend sur un LXC Proxmox, en LAN, puis via NPM).
+1. Pousse ce dossier dans ton dépôt (sous ton compte/organisation).
+2. **Settings → Pages** → *Deploy from a branch* → `main` / `/root`.
+3. Ouvre `admin.html`, connecte-toi avec un compte GitHub (jeton ou OAuth).
+   Au **premier login**, si `data/access.json` n'existe pas, ce compte devient **administrateur**
+   et le fichier est créé automatiquement.
+4. Édite, puis **Enregistrer** → commit dans le dépôt ; le site se met à jour en ~1 min.
 
-## Modèle de données — `data/pages.json`
-
-```json
-{
-  "site": { "brand": "...", "tagline": "...", "hero": { "kicker": "", "title": "", "subtitle": "" } },
-  "pages": [
-    { "id": "zqiro", "group": "ZQIRO", "title": "Projet ZQIRO", "html": "<p>…</p>" }
-  ],
-  "footer": { "text": "", "copyright": "" }
-}
-```
-
-Le **groupe** d'une page (`"group"`) détermine qui peut l'éditer.
-
-## Identifiants par défaut
-
-- `thibaud` / `airbus123` — **à changer dès la première connexion** (onglet *Mon compte*).
-
-> Sécurité : le backend n'est pour l'instant **exposé qu'en réseau local**. Pour un accès
-> depuis Internet, place-le derrière Nginx Proxy Manager (HTTPS) et restreins l'accès si besoin.
+Détails (jetons, OAuth App, questions de sécurité) → **DEPLOY.md**.

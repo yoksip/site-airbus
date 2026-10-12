@@ -1,0 +1,6 @@
+{
+  "note": "Droits par compte GitHub. Clé = login GitHub (username). role: admin | editor. groups = groupes de pages éditables.",
+  "users": {
+    "yoksip": { "role": "admin", "groups": [] }
+  }
+}

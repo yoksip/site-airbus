@@ -9,6 +9,11 @@
 .login-btn{width:100%;margin-top:6px}
 .login-error{color:#c0392b;font-size:.9rem;margin:12px 0 0;text-align:center}
 .login-hint{font-size:.78rem;color:var(--muted);margin-top:16px;text-align:center;line-height:1.5}
+.or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.8rem;margin:16px 0}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.device-box{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:6px 0 4px;font-size:.9rem;text-align:center}
+.device-box p{margin:0 0 6px}
+.device-box code{font-size:1.15rem;letter-spacing:.18em;font-weight:700;color:var(--blue-700)}
 
 /* Bar */
 .admin-bar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:16px;background:var(--blue-800);color:#fff;padding:12px 22px;flex-wrap:wrap}
