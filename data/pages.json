@@ -10,10 +10,6 @@
       "ctaPrimaryLink": "#flotte"
     }
   },
-  "footer": {
-    "text": "Concept de démonstration — thème inspiré de l'aéronautique.",
-    "copyright": "© 2026 — Site de démonstration. Non affilié à Airbus SE."
-  },
   "pages": [
     {
       "id": "flotte",
@@ -37,7 +33,7 @@
       "id": "zqiro",
       "group": "ZQIRO",
       "title": "Projet ZQIRO",
-      "html": "<p>Modif legitime par Alain</p>"
+      "html": "<p>Espace réservé au <strong>projet ZQIRO</strong>. Seuls les utilisateurs ayant le droit sur le groupe <strong>ZQIRO</strong> peuvent modifier cette page.</p>"
     },
     {
       "id": "contact",
@@ -45,5 +41,9 @@
       "title": "Contact",
       "html": "<p>Une question, un projet, une collaboration ?</p><p><strong>Siège France</strong><br>2 rond-point Dewoitine, 31700 Blagnac</p><p>Éditable depuis le <a href=\"admin.html\">panneau d'administration</a>.</p>"
     }
-  ]
+  ],
+  "footer": {
+    "text": "Concept de démonstration — thème inspiré de l'aéronautique.",
+    "copyright": "© 2026 — Site de démonstration. Non affilié à Airbus SE."
+  }
 }
