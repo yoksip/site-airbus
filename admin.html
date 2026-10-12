@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administration — Site</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="assets/plane.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ===== Connexion ===== -->
+  <div class="login-screen" id="loginScreen">
+    <form class="login-card" id="loginForm">
+      <img src="assets/plane.svg" class="login-mark" alt="">
+      <h1>Administration</h1>
+      <p class="login-sub">Connecte-toi pour gérer le site.</p>
+      <label class="field"><span>Identifiant</span><input type="text" id="userInput" autocomplete="username" placeholder="thibaud" required></label>
+      <label class="field"><span>Mot de passe</span><input type="password" id="passInput" autocomplete="current-password" placeholder="••••••••" required></label>
+      <button class="btn btn-primary login-btn" type="submit" id="loginBtn">Se connecter</button>
+      <p class="login-error" id="loginError" hidden></p>
+      <p class="login-hint" id="loginHint"></p>
+    </form>
+  </div>
+
+  <!-- ===== Application ===== -->
+  <div class="admin-app" id="adminApp" hidden>
+    <header class="admin-bar">
+      <div class="admin-bar-left">
+        <img src="assets/plane.svg" class="brand-mark" alt="">
+        <strong>Administration</strong>
+      </div>
+      <div class="admin-bar-right">
+        <span class="dirty-dot" id="dirtyDot" title="Modifications non enregistrées" hidden></span>
+        <span class="who" id="whoAmI"></span>
+        <a class="btn btn-ghost" href="index.html" target="_blank" rel="noopener">Voir le site</a>
+        <button class="btn btn-primary" id="saveBtn" type="button">Enregistrer</button>
+        <button class="btn btn-ghost" id="logoutBtn" type="button">Déconnexion</button>
+      </div>
+    </header>
+
+    <div class="tabs" id="tabs"></div>
+
+    <!-- Barre d'outils WYSIWYG -->
+    <div class="toolbar" id="toolbar">
+      <button type="button" data-cmd="bold" title="Gras"><b>B</b></button>
+      <button type="button" data-cmd="italic" title="Italique"><i>I</i></button>
+      <button type="button" data-cmd="underline" title="Souligné"><u>U</u></button>
+      <span class="tb-sep"></span>
+      <button type="button" data-block="h3" title="Titre">H</button>
+      <button type="button" data-block="p" title="Paragraphe">&#182;</button>
+      <span class="tb-sep"></span>
+      <button type="button" data-cmd="insertUnorderedList" title="Liste à puces">&#8226; &#8212;</button>
+      <button type="button" data-cmd="insertOrderedList" title="Liste numérotée">1. &#8212;</button>
+      <span class="tb-sep"></span>
+      <button type="button" id="linkBtn" title="Insérer un lien">&#128279;</button>
+      <button type="button" data-cmd="removeFormat" title="Effacer la mise en forme">&#9003;</button>
+    </div>
+
+    <div class="admin-wrap">
+      <div class="panel" id="panelPages"></div>
+      <div class="panel" id="panelUsers" hidden></div>
+      <div class="panel" id="panelAccount" hidden></div>
+    </div>
+  </div>
+
+  <!-- ===== Toasts / modales ===== -->
+  <div class="toast" id="toast" hidden></div>
+
+  <div class="modal" id="promptModal" hidden>
+    <div class="modal-card">
+      <h2 id="promptTitle">Saisie</h2>
+      <p class="modal-help" id="promptHelp"></p>
+      <label class="field"><span id="promptLabel">Valeur</span><input id="promptInput" type="text"></label>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="promptCancel" type="button">Annuler</button>
+        <button class="btn btn-primary" id="promptOk" type="button">Valider</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/admin.js"></script>
+</body>
+</html>

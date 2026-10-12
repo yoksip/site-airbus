@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Avion">
+  <g fill="currentColor">
+    <path d="M256 34c-11 0-20 9-20 22v128L58 292v42l178-64v138l-52 40v30l72-22 72 22v-30l-52-40V270l178 64v-42L276 184V56c0-13-9-22-20-22z"/>
+  </g>
+</svg>

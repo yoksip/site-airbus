@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Airbus — Aerospace</title>
+  <meta name="description" content="Site themable aéronautique, éditable via un panneau d'administration multi-utilisateurs.">
+  <link rel="icon" href="assets/plane.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top">
+        <img src="assets/plane.svg" class="brand-mark" alt="">
+        <span class="brand-name" data-site="brand">AIRBUS</span>
+      </a>
+      <nav class="nav" id="nav"></nav>
+      <a class="btn btn-ghost" href="admin.html">Administration</a>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-bg"></div>
+    <img src="assets/plane.svg" class="hero-plane" alt="">
+    <div class="container hero-inner">
+      <span class="kicker" data-hero="kicker"></span>
+      <h1 data-hero="title"></h1>
+      <p class="lead" data-hero="subtitle"></p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" id="cta1" href="#"></a>
+      </div>
+    </div>
+  </section>
+
+  <main id="pages"></main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="brand">
+        <img src="assets/plane.svg" class="brand-mark" alt="">
+        <span data-site="brand"></span>
+      </div>
+      <p data-footer="text"></p>
+      <p class="copyright" data-footer="copyright"></p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

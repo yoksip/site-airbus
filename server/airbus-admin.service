@@ -1,0 +1,19 @@
+[Unit]
+Description=Airbus admin backend (site-airbus)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=airbus
+Group=airbus
+WorkingDirectory=/opt/airbus-admin
+ExecStart=/usr/bin/python3 /opt/airbus-admin/app.py /etc/airbus-admin/config.json
+Restart=on-failure
+RestartSec=3
+# Durcissement léger
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

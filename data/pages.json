@@ -1,0 +1,49 @@
+{
+  "site": {
+    "brand": "AIRBUS",
+    "tagline": "L'avenir de l'aéronautique",
+    "hero": {
+      "kicker": "Aerospace • Toulouse • Depuis 1970",
+      "title": "Façonner l'avenir du vol",
+      "subtitle": "Des avions plus propres, plus sûrs et plus connectés, pour relier les personnes et les cultures du monde entier.",
+      "ctaPrimary": "Découvrir la flotte",
+      "ctaPrimaryLink": "#flotte"
+    }
+  },
+  "pages": [
+    {
+      "id": "flotte",
+      "group": "Général",
+      "title": "Notre flotte",
+      "html": "<p>De la famille <strong>A320neo</strong> aux long-courriers <strong>A350</strong>, nos appareils couvrent tous les besoins des compagnies aériennes — du court au très long courrier.</p><p>Chaque nouvelle génération réduit la consommation de carburant, le bruit et les émissions.</p>"
+    },
+    {
+      "id": "innovation",
+      "group": "Général",
+      "title": "Innovation",
+      "html": "<p>Nous investissons dans les <strong>matériaux composites</strong>, l'<strong>avionique numérique</strong>, la <strong>connectivité à bord</strong> et l'<strong>hydrogène</strong>.</p><ul><li>Ailes à haute efficacité aérodynamique</li><li>Cabines intelligentes</li><li>Pilotage assisté par IA</li></ul>"
+    },
+    {
+      "id": "durabilite",
+      "group": "Général",
+      "title": "Durabilité",
+      "html": "<p>La décarbonation est notre priorité : appareils <em>prêts pour le SAF</em> et travail sur un avion à <strong>zéro émission</strong>.</p>"
+    },
+    {
+      "id": "zqiro",
+      "group": "ZQIRO",
+      "title": "Projet ZQIRO",
+      "html": "<p>Espace réservé au <strong>projet ZQIRO</strong>. Seuls les utilisateurs ayant le droit sur le groupe <strong>ZQIRO</strong> peuvent modifier cette page.</p>"
+    },
+    {
+      "id": "contact",
+      "group": "Général",
+      "title": "Contact",
+      "html": "<p>Une question, un projet, une collaboration ?</p><p><strong>Siège France</strong><br>2 rond-point Dewoitine, 31700 Blagnac</p><p>Éditable depuis le <a href=\"admin.html\">panneau d'administration</a>.</p>"
+    }
+  ],
+  "footer": {
+    "text": "Concept de démonstration — thème inspiré de l'aéronautique.",
+    "copyright": "© 2026 — Site de démonstration. Non affilié à Airbus SE."
+  }
+}
